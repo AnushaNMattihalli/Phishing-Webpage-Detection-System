@@ -1,0 +1,36 @@
+<!-- templates/index.html -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>PhishDetect — URL Analyzer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body { background:#f7f9fc; }
+    .card { border-radius:12px; }
+    .hero { padding:40px 0; }
+    input[type="url"]{ font-size:1.05rem; padding:1rem; }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="hero text-center my-5">
+    <h1 class="display-6">PhishDetect</h1>
+    <p class="lead text-muted">Paste a URL to run a deep phishing-risk analysis (defensive).</p>
+    <form id="analyzeForm" method="post" action="/analyze" class="d-flex justify-content-center mt-4">
+      <input name="url" type="url" placeholder="https://example.com/login" class="form-control w-50" required>
+      <button class="btn btn-primary ms-2">Analyze</button>
+    </form>
+    <p class="text-muted small mt-2">This tool only inspects public pages. Use only on systems you are authorized to test.</p>
+  </div>
+  <div id="response" class="my-4"></div>
+</div>
+<script>
+  // simple progressive UX: submit form and open results in same window (server returns rendered report)
+  document.getElementById('analyzeForm').addEventListener('submit', function(e){
+    // allow default POST to /analyze so server renders the report page.
+  });
+</script>
+</body>
+</html>
